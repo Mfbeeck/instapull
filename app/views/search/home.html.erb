@@ -1,0 +1,23 @@
+<div style = "margin: auto; text-align: center;">
+	<h2 style = "font-family: 'Futura'">Please Enter The Account Name Of The User You Are Looking To Analyze:</h2>
+	<%= form_for @account do |f|%>
+	  <ul>
+	  	<% @account.errors.full_messages.each do |error| %>
+	    <li><%= error %></li>
+	  	<% end %>
+	  </ul>
+	  <p style = "font-family: 'Futura'">
+	    <h3><strong><%= f.label "Username" %></strong></h3>
+	    <%= f.text_field :username %>
+	  </p>
+	  <p>
+	    <%= f.submit 'Submit' %> &nbsp;
+	    <%= button_tag "Reset Field", type: :reset %>
+	  </p>
+  	<%end%>
+</div>
+
+  	<br>
+  	<h2 style = "font-family: 'Futura'; text-align:center">#livemusic</h2>
+  	<br>
+	<div style = "text-align: center; width: 85%; margin:auto;" id="instafeed"></div>

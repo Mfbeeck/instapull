@@ -1,0 +1,12 @@
+<h2 style = "text-align: center">List of Accounts (Alphabetical)</h2>
+<br>
+<table class="accounts-table">
+	<tr>
+		<td style = "font-weight: bold;">Username</td>
+	</tr>
+		<% @accounts.each do |account|%>
+		<tr>	
+			<td><%= link_to account.username, account_path(account) %></td>
+		</tr>
+		<%end%>
+</table>

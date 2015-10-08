@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instapull</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script type="text/javascript" src="/desktop/instapull/app/assets/javascripts/instafeed.min.js"></script>
+
+</head>
+<body>
+
+<p style = "text-align: center;" class="flash"><br><%= flash.notice %></p>
+
+<%= yield %>
+
+
+<script type="text/javascript">
+    // TO GET A SPECIFIC USER's IMAGES
+    // var feed = new Instafeed({
+    //     get: 'user',
+    //     userId: 1791483929,
+    //     accessToken: '182427121.467ede5.9dfadf47ad784e32a266f26cc41db64e'
+    // });
+    // feed.run();
+
+    var feed = new Instafeed({
+        get: 'tagged',
+        sortBy: 'most-liked',
+        tagName: 'livemusic',
+        clientId: 'd7ea0014d675470d9a518daf02093a8f'
+    });
+    feed.run();
+</script>
+</body>
+</html>

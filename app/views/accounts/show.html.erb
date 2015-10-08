@@ -1,0 +1,23 @@
+<h1 style = "text-align:center">User: @<%=@account.username%></h1>
+<br>
+<h2 style = "text-align:center; text-decoration: underline;"> Stats</h2>
+<br>
+	<table class="stats-table">
+	  <tr>
+	    <td><strong>Insta Id</strong></td>
+	    <td><strong>User Name</strong></td>
+	    <td><strong>Followers</strong></td>
+	    <td><strong>Following</strong></td>	    
+	    <td><strong># Of Posts</strong></td> 
+	    <td><strong>URL</strong></td> 
+ 	  </tr>
+
+	  <tr>
+	    <td></td>
+	    <td><%=link_to "@" + @account.username, @account.instagram_url%></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td><%=link_to @account.instagram_url, @account.instagram_url%></td>	   	 	    
+	  </tr>
+	</table>
