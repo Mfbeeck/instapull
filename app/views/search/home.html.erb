@@ -1,6 +1,6 @@
 <div style = "margin: auto; text-align: center;">
 	<h2 style = "font-family: 'Futura'">Please Enter The Account Name Of The User You Are Looking To Analyze:</h2>
-	<%= form_for @account do |f|%>
+	<%= bootstrap_form_for(@account) do |f|%>
 	  <ul>
 	  	<% @account.errors.full_messages.each do |error| %>
 	    <li><%= error %></li>
@@ -8,11 +8,13 @@
 	  </ul>
 	  <p style = "font-family: 'Futura'">
 	    <h3><strong><%= f.label "Username" %></strong></h3>
-	    <%= f.text_field :username %>
-	  </p>
+		  <div style = "width: 20%; margin:auto" class="input-group">
+	  		<span class="input-group-addon" id="basic-addon1">@</span>
+	  	    <input id="account_username" name="account[username]" type="text" class="form-control" aria-describedby="basic-addon1">
+		  </div>
+	  </p>	
 	  <p>
 	    <%= f.submit 'Submit' %> &nbsp;
-	    <%= button_tag "Reset Field", type: :reset %>
 	  </p>
   	<%end%>
 </div>
