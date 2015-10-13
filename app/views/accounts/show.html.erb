@@ -1,23 +1,53 @@
-<h1 style = "text-align:center">User: @<%=@account.username%></h1>
+<h1 style = "text-align:center; text-decoration: underline;">@<%=@account.username%></h1>
 <br>
-<h2 style = "text-align:center; text-decoration: underline;"> Stats</h2>
-<br>
-	<table class="stats-table">
-	  <tr>
-	    <td><strong>Insta Id</strong></td>
-	    <td><strong>User Name</strong></td>
-	    <td><strong>Followers</strong></td>
-	    <td><strong>Following</strong></td>	    
-	    <td><strong># Of Posts</strong></td> 
-	    <td><strong>URL</strong></td> 
- 	  </tr>
+<h2 style = "text-align:center;"> Info</h2>
+	<br>
+		<table class="stats-table">
+		  <tr>
+		    <td><strong>Insta Id</strong></td>
+		    <td><strong>User Name</strong></td>
+		    <td><strong>Followers</strong></td>
+		    <td><strong>Following</strong></td>	    
+		    <td><strong># Of Posts</strong></td> 
+		    <td><strong>URL</strong></td> 
+	 	  </tr>
 
-	  <tr>
-	    <td></td>
-	    <td><%=link_to "@" + @account.username, @account.instagram_url%></td>
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	    <td><%=link_to @account.instagram_url, @account.instagram_url%></td>	   	 	    
-	  </tr>
-	</table>
+		  <tr>
+		    <td><%=@account.instagram_id%></td>
+		    <td><%=link_to "@" + @account.username, @account.instagram_url%></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td><%=link_to @account.instagram_url, @account.instagram_url%></td>	   	 	    
+		  </tr>
+		</table>
+	<br>
+	<br>
+<h2 style= "text-align:center">Recent Posts </h2>
+<br>
+<div class =  "wrapper">
+	<div class = "insta-wrap">
+		<div style = "text-align: center; width: 85%; margin:auto;" id="instafeed"></div>
+	</div>	
+</div>
+<br>
+<br>
+	<div class = "back-link-div">
+		<%=link_to "Back", accounts_path, class: "back-link" %></span>
+	</div>
+<br>
+<br>	
+
+
+<script type="text/javascript">
+	// TO GET A SPECIFIC USER's IMAGES
+	//var insta_id = "#{@account.instagram_id}";
+	var insta_id = <%=@account.instagram_id%>;
+	var feed = new Instafeed({
+	    get: 'user',
+	    userId: insta_id,
+	    limit: 30,
+	    accessToken: '182427121.467ede5.9dfadf47ad784e32a266f26cc41db64e'
+	});
+	feed.run();
+</script>

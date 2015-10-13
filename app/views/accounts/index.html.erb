@@ -2,11 +2,21 @@
 <br>
 <table class="accounts-table">
 	<tr>
-		<td style = "font-weight: bold;">Username</td>
+	    <td><strong>Insta Id</strong></td>
+	    <td><strong>User Name</strong></td>
+	    <td><strong>Followers</strong></td>
+	    <td><strong>Following</strong></td>	    
+	    <td><strong># Of Posts</strong></td> 
+	    <td><strong>URL</strong></td> 
 	</tr>
-		<% @accounts.each do |account|%>
-		<tr>	
-			<td><%= link_to account.username, account_path(account) %></td>
-		</tr>
-		<%end%>
+	<% @accounts.each do |account|%>
+	  <tr>
+	    <td><%=account.instagram_id%></td>
+	    <td><%=link_to "@" + account.username, account_path(account)%></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td><%=link_to account.instagram_url, account.instagram_url%></td>	   	 	    
+	  </tr>
+	<%end%>
 </table>

@@ -1,5 +1,5 @@
 <div style = "margin: auto; text-align: center;">
-	<h2 style = "font-family: 'Futura'">Please Enter The Account Name Of The User You Are Looking To Analyze:</h2>
+	<h2 style = "font-family: 'Futura'">Enter The Account Name Of The User You Are Looking To Analyze:</h2>
 	<%= bootstrap_form_for(@account) do |f|%>
 	  <ul>
 	  	<% @account.errors.full_messages.each do |error| %>
@@ -22,4 +22,19 @@
   	<br>
   	<h2 style = "font-family: 'Futura'; text-align:center">#livemusic</h2>
   	<br>
-	<div style = "text-align: center; width: 85%; margin:auto;" id="instafeed"></div>
+	<div class =  "wrapper">
+		<div class = "insta-wrap">
+			<div style = "text-align: center; width: 60%; margin:auto;" id="instafeed"></div>
+		</div>	
+	</div>	
+	<br>
+
+<script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'tagged',
+        limit: 28,
+        tagName: 'livemusic',
+        clientId: 'e34f7deb326b43acb280d674572da562'
+    });
+    feed.run();
+</script>

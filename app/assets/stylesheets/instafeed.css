@@ -1,0 +1,11 @@
+#instafeed img{
+	padding: 2px;
+	opacity: .8;
+	transition: opacity .3s;
+}
+
+#instafeed img:hover {
+	opacity: 1;
+	border-radius: 2px;
+	transition: opacity .7s;
+}
