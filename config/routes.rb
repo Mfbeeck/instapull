@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'search/home'
   root 'search#home'
 
-  resources :accounts
+  resources :tables do
+    resources :accounts
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
