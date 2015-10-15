@@ -1,0 +1,16 @@
+.landing-div{
+	margin: auto;
+	text-align: center;
+	font-family: "Futura";
+	}
+
+.landing-div .form-control {
+	width: 30%;
+	margin: auto;
+}
+
+.landing-div .btn-default{
+	width: 10%;
+	font-weight: bold;
+	font-size: 1.5vw;
+}

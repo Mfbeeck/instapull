@@ -1,39 +1,36 @@
-<h1 style = "text-align:center; text-decoration: underline;">@<%=@account.username%></h1>
-<br>
-<h2 style = "text-align:center;"> Info</h2>
-	<br>
-		<table class="stats-table">
+<div class = "account-header">
+	<%= link_to image_tag(@account.profile_picture_url), @account.instagram_url, class: "account-profile-picture"%>
+	<h1 style = "text-align:center;">@<%=@account.username%></h1>
+	<span style = "color: #808080;">As of <%=@account.created_at.strftime('%b %d, %Y')%></span>  
+
+</div>
+<!-- <h3 style = "text-align:center;"> Info</h3>
+ -->	<br>
+		<table class="show-account-table">
 		  <tr>
-		    <td><strong>Insta Id</strong></td>
-		    <td><strong>User Name</strong></td>
 		    <td><strong>Followers</strong></td>
 		    <td><strong>Following</strong></td>	    
-		    <td><strong># Of Posts</strong></td> 
-		    <td><strong>URL</strong></td> 
+		    <td><strong># of Posts</strong></td> 
 	 	  </tr>
 
 		  <tr>
-		    <td><%=@account.instagram_id%></td>
-		    <td><%=link_to "@" + @account.username, @account.instagram_url%></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td><%=link_to @account.instagram_url, @account.instagram_url%></td>	   	 	    
+		    <td><%=number_to_human(@account.followers, precision: 3)%></td>
+		    <td><%=number_to_human(@account.following, precision: 3)%></td>
+		    <td><%=number_to_human(@account.posts, precision: 3)%></td>
 		  </tr>
 		</table>
 	<br>
-	<br>
-<h2 style= "text-align:center">Recent Posts </h2>
+<h3 style= "text-align:center">Recent Posts </h3>
 <br>
 <div class =  "wrapper">
 	<div class = "insta-wrap">
-		<div style = "text-align: center; width: 85%; margin:auto;" id="instafeed"></div>
+		<div style = "text-align: center; width: 75%; margin:auto;" id="instafeed"></div>
 	</div>	
 </div>
 <br>
 <br>
 	<div class = "back-link-div">
-		<%=link_to "Back", accounts_path, class: "back-link" %></span>
+		<%=link_to "Back To \"" + @account.table.title.titleize + "\" Table", table_path(@account.table), class: "back-to-table-link" %></span>
 	</div>
 <br>
 <br>	
@@ -47,7 +44,7 @@
 	    get: 'user',
 	    userId: insta_id,
 	    limit: 30,
-	    accessToken: '182427121.467ede5.9dfadf47ad784e32a266f26cc41db64e'
+	    accessToken: '<%=ENV['INSTAGRAM_ACCESS_TOKEN']%>'
 	});
 	feed.run();
 </script>

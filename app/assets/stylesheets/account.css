@@ -1,0 +1,11 @@
+.account-header{
+	text-align:center;
+}
+
+.account-profile-picture:hover{
+	opacity: .85;
+}
+
+.account-profile-picture img{
+	border-radius: 50%;
+}

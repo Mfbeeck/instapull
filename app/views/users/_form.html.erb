@@ -1,0 +1,17 @@
+<%= bootstrap_form_for(@user) do |f| %>
+	 <br>
+	 <p>
+	 	<%= f.text_field :username %>
+	 </p>
+	 <p>
+	 	<%= f.password_field :password %>
+	 </p>
+	 <p>
+	 	<%= f.password_field :password_confirmation %>
+	 </p>
+	 <br>
+	 <p>
+	 	<%= f.submit "Join!" %>
+	 </p>
+<% end %>
+	 

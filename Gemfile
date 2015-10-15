@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem "httparty"
 gem "nokogiri"
 gem 'instagram'
@@ -16,6 +18,8 @@ gem 'rails_12factor'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
+gem 'bcrypt', '~> 3.1.7'
 
 gem 'better_errors'
 # Use Uglifier as compressor for JavaScript assets

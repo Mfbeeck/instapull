@@ -1,0 +1,79 @@
+<div>
+<h1 style = "text-align:center; font-family: Futura;"><%=@table.title.titleize%></h1>
+<p style = "text-align:center;">Created on <%=@table.created_at.strftime('%b %d, %Y')%>
+ <br>
+<% if current_user.id == @table.user_id %>
+ <%= link_to "Edit", edit_table_path%> | <%= link_to "Delete", table_path(@table), method: :delete, data: {confirm: "Do you really want to delete the \"#{@table.title}\" table?"} %>
+ <%end%>
+</p>
+<p style = "text-align:center;">
+	<strong>Description: </strong><%=@table.body%>
+</p>
+<br>
+<% if @table.accounts.count > 0 %>
+	<p style = "font-size: 1.2vw; margin-left: 14.2vw;">
+	  Download As:
+	  <%= link_to "Excel", ("/tables/"+@table.id.to_s+".xls")%> |
+	  <%= link_to "CSV", ("/tables/"+@table.id.to_s+".csv") %>
+	</p>
+		<table class="stats-table">
+			  <tr>
+	  		    <td></td>		  
+			    <td style = "font-size: 1.2vw;"><strong>Date Analyzed</strong></td>		  
+			    <td style = "font-size: 1.2vw;"><strong>Insta Id</strong></td>
+			    <td style = "font-size: 1.2vw;"><strong>User Name</strong></td>		    
+			    <td style = "font-size: 1.2vw;"><strong>Name</strong></td>		    
+			    <td style = "font-size: 1.2vw;"><strong>Followers</strong></td>
+			    <td style = "font-size: 1.2vw;"><strong>Following</strong></td>	    
+			    <td style = "font-size: 1.2vw;"><strong># of Posts</strong></td> 
+			    <td style = "font-size: 1.2vw;"><strong>URL</strong></td> 
+		 	  </tr>
+
+		<% @accounts.each do |account|%>
+			  <tr>
+				<% if current_user.id == @table.user_id %>			  
+					<td><%= link_to "Delete", account_path(account), method: :delete, data: {confirm: "Do you really want to delete \@#{account.username}?"} %></td>
+				<%else%>
+					<td></td>
+				<%end%>	
+				<td><%=account.created_at.strftime('%b %d, %Y')%></td>		  
+			    <td><%=account.instagram_id%></td>
+			    <td><%=link_to "@" + account.username, account_path(account)%></td>
+			    <td><%=account.name%></td>
+			    <td><%=number_with_delimiter(account.followers)%></td>
+			    <td><%=account.following%></td>
+			    <td><%=account.posts%></td>
+			    <td><%=link_to account.instagram_url, account.instagram_url%></td>	   	 	    
+			  </tr>
+	    <%end%>
+		</table>
+		<br>
+
+<%end%>
+
+<% if current_user.id == @table.user_id %>			  
+	<div style = "margin: auto; text-align: center;">
+		<%= bootstrap_form_for(@account) do |f|%>
+		  <ul>
+		  	<% @account.errors.full_messages.each do |error| %>
+		    <li><%= error %></li>
+		  	<% end %>
+		  </ul>
+	  	  <%= f.hidden_field :table_id, :value => @table.id %>
+
+		  <p style = "font-family: 'Futura'">
+		    <h4><strong><%= f.label "Add Account To Table" %></strong></h4>
+			  <div style = "width: 20%; margin:auto" class="input-group">
+		  		<span class="input-group-addon" id="basic-addon1">@</span>
+		  	    <input id="account_username" name="account[username]" type="text" class="form-control" aria-describedby="basic-addon1">
+			  </div>
+		  </p>
+		  <%= f.submit 'Submit' %>
+	  	<%end%>
+	</div> 	
+<%end%>	
+<br>
+<br>
+
+
+</div>

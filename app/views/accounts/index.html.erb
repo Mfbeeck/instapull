@@ -1,22 +1,34 @@
-<h2 style = "text-align: center">List of Accounts (Alphabetical)</h2>
+<h2 style = "text-align: center; font-family: Futura;">List of Accounts</h2>
 <br>
-<table class="accounts-table">
-	<tr>
-	    <td><strong>Insta Id</strong></td>
-	    <td><strong>User Name</strong></td>
-	    <td><strong>Followers</strong></td>
-	    <td><strong>Following</strong></td>	    
-	    <td><strong># Of Posts</strong></td> 
-	    <td><strong>URL</strong></td> 
-	</tr>
-	<% @accounts.each do |account|%>
-	  <tr>
-	    <td><%=account.instagram_id%></td>
-	    <td><%=link_to "@" + account.username, account_path(account)%></td>
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	    <td><%=link_to account.instagram_url, account.instagram_url%></td>	   	 	    
-	  </tr>
-	<%end%>
-</table>
+<% if @accounts.count > 0%>
+	<table class="stats-table">
+		<tr>
+		    <td></td>		  	
+		    <td><strong>Date Analyzed</strong></td>		  
+		    <td><strong>Table Name</strong></td>		  
+		    <td><strong>Insta Id</strong></td>
+		    <td><strong>User Name</strong></td>
+		    <td><strong>Followers</strong></td>
+		    <td><strong>Following</strong></td>	    
+		    <td><strong># of Posts</strong></td> 
+		    <td><strong>URL</strong></td> 
+		</tr>
+		<% @accounts.each do |account|%>
+		  <tr>
+			<td><%= link_to "Delete", account_path(account), method: :delete, data: {confirm: "Do you really want to delete \@#{account.username}?"} %></td>
+		    <td><%=account.created_at.strftime('%b %d, %Y')%></td>		  
+		    <td><%=link_to account.table.title.capitalize, table_path(account.table)%></td>		  	  
+		    <td><%=account.instagram_id%></td>
+		    <td><%=link_to "@" + account.username.downcase, account_path(account)%></td>
+		    <td><%=account.followers%></td>
+		    <td><%=account.following%></td>
+		    <td><%=account.posts%></td>
+		    <td><%=link_to account.instagram_url, account.instagram_url%></td>	   	 	    
+		  </tr>
+		<%end%>
+	</table>
+<%else%>
+	<br>
+	<br>
+	<h3 style = "font-family: Futura; text-align: center;">You have not added any accounts yet. Please <%= link_to "click here", root_path, id: "new-table-link2"%> to do so!</h3> 
+<%end%>

@@ -1,22 +1,33 @@
 <div style = "margin: auto; text-align: center;">
 	<h2 style = "font-family: 'Futura'">Enter The Account Name Of The User You Are Looking To Analyze:</h2>
-	<%= bootstrap_form_for(@account) do |f|%>
-	  <ul>
-	  	<% @account.errors.full_messages.each do |error| %>
-	    <li><%= error %></li>
-	  	<% end %>
-	  </ul>
-	  <p style = "font-family: 'Futura'">
-	    <h3><strong><%= f.label "Username" %></strong></h3>
-		  <div style = "width: 20%; margin:auto" class="input-group">
-	  		<span class="input-group-addon" id="basic-addon1">@</span>
-	  	    <input id="account_username" name="account[username]" type="text" class="form-control" aria-describedby="basic-addon1">
-		  </div>
-	  </p>	
-	  <p>
-	    <%= f.submit 'Submit' %> &nbsp;
-	  </p>
-  	<%end%>
+	<% if current_user.tables.count > 0 %>	
+		<%= bootstrap_form_for(@account) do |f|%>
+		  <ul>
+		  	<% @account.errors.full_messages.each do |error| %>
+		    <li><%= error %></li>
+		  	<% end %>
+		  </ul>
+		  <br>
+		  <p style = "font-family: 'Futura'">
+		    <h4><strong><%= f.label "Username" %></strong></h4>
+			  <div style = "width: 20%; margin:auto" class="input-group">
+		  		<span class="input-group-addon" id="basic-addon1">@</span>
+		  	    <input id="account_username" name="account[username]" type="text" class="form-control" aria-describedby="basic-addon1">
+			  </div>
+		  </p>
+		  <br>
+		  <p>
+		  	<%= f.select :table_id, @tables.collect{|table| [table.title.capitalize, table.id]}, { label: "What Table Would You Like To Add This To?:" }, { class: "selectpicker" } %>
+		  </p>
+		  <p>
+		    <%= f.submit 'Submit' %> &nbsp;
+		  </p>
+	  	<%end%>
+	<%else%>
+	<br>
+	<br>
+		<h3 style = "font-family: Futura;">You currently have no tables. Please <%= link_to "create one", new_table_path, id: "new-table-link2"%> to continue!</h3>  
+	<%end%>		
 </div>
 
   	<br>
@@ -24,17 +35,22 @@
   	<br>
 	<div class =  "wrapper">
 		<div class = "insta-wrap">
-			<div style = "text-align: center; width: 60%; margin:auto;" id="instafeed"></div>
+			<div style = "text-align: center; width: 80%; margin:auto;" id="instafeed"></div>
 		</div>	
 	</div>	
 	<br>
-
+	<br>
+	<div class = "back-link-div">
+		<%= link_to "logout", logout_path, method: "delete", class: "back-to-table-link" %></span>
+	</div>
+	<br>
+	<br>
 <script type="text/javascript">
     var feed = new Instafeed({
         get: 'tagged',
-        limit: 28,
+        limit: 24,
         tagName: 'livemusic',
-        clientId: 'e34f7deb326b43acb280d674572da562'
+        clientId: '<%=ENV['INSTAGRAM_CLIENT_ID']%>',
     });
     feed.run();
 </script>

@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
+
+  get 'users/new'
+
   get 'search/home'
+  get 'search/landing'
   root 'search#home'
 
-  resources :tables do
-    resources :accounts
-  end
+  resources :users
+  resources :tables
+  resources :accounts
+
+  get 'signup'  => 'users#new'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+  # get '/tables/#{@table.id}.xls' => 'tables#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

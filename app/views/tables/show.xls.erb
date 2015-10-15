@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Instapull Sheet 1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Date Analyzed</Data></Cell>
+        <Cell><Data ss:Type="String">Instagram Id</Data></Cell>
+        <Cell><Data ss:Type="String">User Name</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Followers</Data></Cell>
+        <Cell><Data ss:Type="String">Following</Data></Cell>
+        <Cell><Data ss:Type="String"># of Posts</Data></Cell>
+        <Cell><Data ss:Type="String">Instagram URL</Data></Cell>
+      </Row>
+	<% @table.accounts.each do |account|%>
+      <Row>
+        <Cell><Data ss:Type="String"><%= account.created_at.strftime('%b %d, %Y')%></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= account.instagram_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "@" + account.username %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account.name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= account.followers %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= account.following %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= account.posts %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account.instagram_url %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

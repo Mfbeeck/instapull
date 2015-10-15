@@ -1,0 +1,120 @@
+.table-form{
+	text-align: center;
+}
+
+.tables-container{
+	text-align:center;
+}
+
+.stats-table{
+ 		color:black;
+		width: 72%;
+		margin: auto;
+	}
+  
+.stats-table tr td {
+		border: 1px solid black;
+		text-align: center;
+		padding-right: .5vw;
+		padding-left: .5vw;
+		font-size: 1.05vw;
+	}
+
+.stats-table a:hover {
+		opacity: .7;
+	}
+
+
+.accounts-table{
+ 		color: black;
+		width: 90%;
+		margin: auto;
+	}
+  
+.accounts-table tr td {
+		border: 1px solid black;
+		text-align: center;
+		font-size: 1.5vw;
+	}
+
+.accounts-table a:hover {
+		opacity: .7;
+	}
+
+#account_table_id{
+	margin: auto;
+	width: 30%;
+}
+
+.table-of-tables{
+ 		color: black;
+		width: 72%;
+		margin: auto;
+	}
+  
+.table-of-tables tr td {
+		border: 1px solid black;
+		text-align: center;
+		font-size: 1.3vw;
+		word-wrap: break-word;
+		max-width: 250px;
+	}
+
+#table-description {
+	font-size: 1vw;
+}
+
+.table-inputs textarea {
+	width: 300px;
+	height: 80px;
+}
+
+.table-inputs input {
+	width: 300px;
+}
+
+.back-to-table-link {
+	font-size: 1.7vw;
+	padding: 1vw;
+	border: solid 1px #5693C7;
+	border-radius: 10px;
+}
+
+.back-to-table-link:hover {
+	text-decoration: none;
+	opacity: .7;
+/*	color: white;
+	background-color: rgba(46, 120, 186, 1);
+*/
+}
+
+.show-account-table{
+ 		color:black;
+		width: 50%;
+		margin: auto;
+	}
+  
+.show-account-table tr td {
+		text-align: center;
+		padding-right: .5vw;
+		padding-left: .5vw;
+		font-size: 1.5vw;
+	}
+
+.show-account-table a:hover {
+		opacity: .7;
+	}
+#new-table-link {
+	font-weight: normal;
+	font-size: 1.2vw;
+}
+
+#new-table-link:hover {
+	opacity: .7;
+}
+
+#new-table-link2:hover {
+		text-decoration: none;
+		opacity: .7;
+	}
+

@@ -1,0 +1,34 @@
+<div class = "tables-container">
+	<h1 style = "text-align:center; font-family: 'Futura';"> Your Tables </h1>
+	<%= link_to "+create a new table", new_table_path, id: "new-table-link"%>
+	<br>
+	<br>
+<% if @tables.count > 0 %>
+	<table class = "table-of-tables">
+  		<tr>
+		    <td><strong></strong></td>		  		  
+		    <td><strong>Date Created</strong></td>		  		  
+		    <td><strong>Table Title</strong></td>
+		    <td><strong>Accounts</strong></td>
+		    <td><strong>Table Description</strong></td>
+	 	</tr>
+		<% @tables.each do |table|%>
+		<tr>
+		<% if current_user.id == table.user_id %>
+			<td><%= link_to "Edit", edit_table_path(table)%></td>
+		<%else%>
+			<td></td>
+		<%end%>		
+			<td><%= table.created_at.strftime('%b %d, %Y')%></td>
+			<td><%= link_to table.title.titleize, table_path(table)%>
+			<td><%= table.accounts.count%></td>
+			<td id = "table-description"><%= table.body.truncate_words(30)%></td>
+		</tr>
+		<%end%>
+	</table>
+<%else%>
+	<h3 style = "font-family: Futura;">You currently have no tables. Please <%= link_to "create one", new_table_path, id: "new-table-link2"%> to continue!</h3>
+
+<%end%>
+
+</div>

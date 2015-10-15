@@ -16,6 +16,9 @@
  *= require_self
  */
 
+.control-label {
+	font-size: 15px;
+}
 .back-link-div {
 	text-align: center;
 }
@@ -27,17 +30,18 @@
 	padding-bottom: 15px;
 	margin-left: 10px;
 	border-radius: 4px;
-	background-color: rgba(46, 120, 186, .8);
+	background-color: #5693C7;
 	color: white;
 	position: fixed;
 	margin-top: -13px;
 	transition: margin-top .5s;
+	z-index: 1;
 
 }
 
 .add-artist-nav-link:hover{
 	text-decoration: none;
-	margin-top: -6px;
+	margin-top: -10px;
 	transition: margin-top .5s;
 	color:white;
 }
@@ -47,36 +51,30 @@
 
 }
 
+.auth-nav-link {
+	padding-top: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	margin-left: 1077px;
+	border-radius: 4px;
+	background-color: #5693C7;
+	color: white;
+	position: fixed;
+	margin-top: -13px;
+	transition: margin-top .5s;
+	z-index: 1;
 
-.stats-table{
- 		color:black;
-		width: 80%;
-		margin: auto;
-	}
-  
-.stats-table tr td {
-		border: 1px solid black;
-		text-align: center;
-		font-size: 1.5vw;
-	}
+}
 
-.stats-table a:hover {
-		opacity: .7;
-	}
+.auth-nav-link:hover{
+	text-decoration: none;
+	margin-top: -10px;
+	transition: margin-top .5s;
+	color:white;
+}
 
+.auth-nav-link:hover{
+	background-color: rgba(46, 120, 186, 1);
 
-.accounts-table{
- 		color:black;
-		width: 40%;
-		margin: auto;
-	}
-  
-.accounts-table tr td {
-		border: 1px solid black;
-		text-align: center;
-		font-size: 1.5vw;
-	}
-
-.accounts-table a:hover {
-		opacity: .7;
-	}	
+}
