@@ -17,7 +17,7 @@
 		  </p>
 		  <br>
 		  <p>
-		  	<%= f.select :table_id, @tables.collect{|table| [table.title.capitalize, table.id]}, { label: "What Table Would You Like To Add This To?:" }, { class: "selectpicker" } %>
+		  	<%= f.select :table_id, @tables.collect{|table| [table.title.capitalize.titleize, table.id]}, { label: "What Table Would You Like To Add This To?:" }, { class: "selectpicker" } %>
 		  </p>
 		  <p>
 		    <%= f.submit 'Submit' %> &nbsp;
