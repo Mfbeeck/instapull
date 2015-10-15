@@ -1,12 +1,12 @@
 <div>
-<h1 style = "text-align:center; font-family: Futura;"><%=@table.title.titleize%></h1>
+<h1 style = "width: 60%; text-align:center; font-family: Futura;"><%=@table.title.titleize%></h1>
 <p style = "text-align:center;">Created on <%=@table.created_at.strftime('%b %d, %Y')%>
  <br>
 <% if current_user.id == @table.user_id %>
  <%= link_to "Edit", edit_table_path%> | <%= link_to "Delete", table_path(@table), method: :delete, data: {confirm: "Do you really want to delete the \"#{@table.title}\" table?"} %>
  <%end%>
 </p>
-<p style = "text-align:center;">
+<p style = "width: 60%; text-align:center;">
 	<strong>Description: </strong><%=@table.body%>
 </p>
 <br>
