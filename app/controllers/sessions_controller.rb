@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		# logged in, hooray
 			session[:user_id] = nil
 			session[:user_id] = @user.id
-	 		redirect_to root_path, notice: "You are now logged in as #{@user.username}!"
+	 		redirect_to search_home_path, notice: "You are now logged in as #{@user.username}!"
 		else
 	 		redirect_to new_user_path
 			flash.notice = "Your info was not correct. Please try again."

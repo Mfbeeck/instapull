@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
 		@account = Account.find(params[:id])
 		if session[:user_id] != @account.user_id
 	      flash[:notice] = "You don't have access to that page!"
-	      redirect_to root_path
+	      redirect_to search_home_path
 	    end
 	end
 

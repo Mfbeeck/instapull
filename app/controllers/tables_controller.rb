@@ -14,7 +14,7 @@ class TablesController < ApplicationController
 		@table = Table.find(params[:id])
 		if session[:user_id] != @table.user_id
 	      flash[:notice] = "You don't have access to that page!"
-	      redirect_to root_path
+	      redirect_to search_home_path
 	    end
 	end
 
@@ -23,7 +23,7 @@ class TablesController < ApplicationController
 		#prevent users from accesing other user's pages and info
 		if session[:user_id] != @table.user_id
 	      flash[:notice] = "You don't have access to that page!"
-	      redirect_to root_path
+	      redirect_to search_home_path
 	    else
 			@accounts = @table.accounts.order('created_at DESC')
 			@account = Account.new		
@@ -50,7 +50,7 @@ class TablesController < ApplicationController
 		@table = Table.find(params[:id])
 		if session[:user_id] != @table.user_id
 	      flash[:notice] = "You don't have access to that page!"
-	      redirect_to root_path
+	      redirect_to search_home_path
 	    else
 			@table.update(table_params)
 			redirect_to table_path(@table)
@@ -62,7 +62,7 @@ class TablesController < ApplicationController
 		@table = Table.find(params[:id])
 		if session[:user_id] != @table.user_id
 	      flash[:notice] = "You don't have access to that page!"
-	      redirect_to root_path
+	      redirect_to search_home_path
 	    else
 			@table.destroy
 			redirect_to tables_path

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'search/home'
   get 'search/landing'
-  root 'search#home'
+  root 'sessions#new'
 
   resources :users
   resources :tables

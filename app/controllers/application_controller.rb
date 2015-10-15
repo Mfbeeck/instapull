@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 	 def require_table_user
 	 	if session[:user_id] != @table.user_id
 	      flash[:notice] = "You don't have access to that page!"
-	      redirect_to root_path
+	      redirect_to search_home_path
 	    end
 	 end
 end
